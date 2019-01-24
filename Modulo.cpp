@@ -3,7 +3,8 @@
 using namespace std;
 
 int main(){
-  int i,j,n[10],ans[10],answer = 0,num;
+  int i,j,n[10],ans[10],answer = 0;
+  int num;
 
   for(i=0;i<10;i++){
     cin >> n[i];
