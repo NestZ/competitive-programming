@@ -27,7 +27,7 @@ int main(){
     }
     cout << "\n";
   }
-  
+
   for(int k = underline;k > 0;k--){
     for(int l = 0;l < column;l++){
       if(l == (column / 2) - k + 1 || l == (column / 2) + k - 1)cout << "*";
