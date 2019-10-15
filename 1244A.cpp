@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+      int n;cin >> n;
+      for(int i = 0;i < n;i++){
+            int a,b,c,d,k;
+            cin >> a >> b >> c >> d >> k;
+            int x = (a + (c - 1)) / c;
+            int y = (b + (d - 1)) / d;
+            if(x + y > k)cout << "-1";
+            else cout << x << " " << k - x;
+            cout << "\n";
+      }
+      return 0;
+}
