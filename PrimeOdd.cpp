@@ -1,25 +1,12 @@
-#include<iostream>
-#include<cstdlib>
-#include<string>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-  int n;
-  string num;
-  string num2;
-
-  cin >> n;
-  bool check[n];
-
+  int n;cin >> n;
   for(int i = 0;i < n;i++){
-    cin >> num;
-    num2 = num[num.size()-1];
-    if(stoi(num2) % 2 == 0)check[i] = false;
-    else check[i] = true;
-  }
-
-  for(int i = 0;i < n;i++){
-    if(check[i] == true)cout << "T\n";
+    string temp;cin >> temp;
+    if(temp == "2")cout << "T\n";
+    else if(temp[temp.length() - 1] & 1)cout << "T\n";
     else cout << "F\n";
   }
 
