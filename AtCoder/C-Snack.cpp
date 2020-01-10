@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+// size_t f = string::npos
 // make pair, tuple
-// __gcd(int, int)
+//
 // bool isPrime(int n){
 //       if(n <= 1)return false;
 //       if(n <= 3)return true;
@@ -22,5 +23,13 @@ using namespace std;
 // }
 
 int main(){
-
+      long long int a,b;cin >> a >> b;
+      long long int x = min(a, b);
+      long long int y = max(a, b);
+      long long int c = x;
+      long long int p = 2;
+      while(c % x != 0 || c % y != 0){
+            c = x * p++;
+      }
+      cout << c;
 }
