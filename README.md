@@ -7,6 +7,8 @@
 
 -Mod inverse.
 
+-Running Sum.
+
 ## Data Structure
 -Segment tree.
 
