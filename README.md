@@ -3,6 +3,8 @@
 ## Algorithms
 -Fast Sieve prime.
 
+-Prime Factor.
+
 -Mod inverse.
 
 ## Data Structure

@@ -1,7 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 // make pair, tuple
-// __gcd(int, int)
+// make pair, tuple
+// 
+// __gcd(int, int);
+// lcm = a * b / __gcd(a, b);
+// 
 // bool isPrime(int n){
 //       if(n <= 1)return false;
 //       if(n <= 3)return true;
@@ -20,6 +24,20 @@ using namespace std;
 //       }
 //       return ans;
 // }
+// 
+// #Count leading & trailing zero of an integer bits
+// __builtin_clz(n);
+// __builtin_clzll(n);
+//
+// #Count 1s bits of an integer
+// __builtin_popcount(n);
+// __builtin_popcountll(n);
+//
+// #Error checking
+// assert(n == 3);
+// 
+// #Error Printing
+// cerr << "Some thing";
 
 int main(){
 
