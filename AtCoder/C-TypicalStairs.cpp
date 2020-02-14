@@ -40,9 +40,20 @@ using namespace std;
 // cerr << "Some thing";
 
 int main(){
-    int w,h;cin >> w >> h;
-    int x,y;cin >> x >> y;
-    printf("%.6f ", double(w) * double(h) / 2.0);
-    if(x + x == w && y + y == h)cout << '1';
-    else cout << '0';
+    long long int MOD = 1e9 + 7;
+    int n,m;cin >> n >> m;
+    vector<long long int> dp(n + 5, 0);
+    vector<bool> v(n + 5, true);
+    dp[0] = 1;
+    for(int i = 0;i < m;i++){
+        int t;cin >> t;
+        v[t] = false;
+    }
+    for(int i = 1;i <= n;i++){
+        if(!v[i])continue;
+        if(i - 1 >= 0)dp[i] += dp[i - 1];
+        if(i - 2 >= 0)dp[i] += dp[i - 2];
+        dp[i] %= MOD;
+    }
+    cout << dp[n];
 }
