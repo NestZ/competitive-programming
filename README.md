@@ -1,18 +1,22 @@
 # Learning Plan
 
 ## Algorithms
--Fast Sieve prime.
+- Fast Sieve prime.
 
--Prime Factor.
+- Prime Factor.
 
--Mod inverse.
+- Mod inverse.
 
--Running Sum.
+- Running Sum.
+
+- Chinese remainder theorem.
+
+- Modular division/inversion.
 
 ## Data Structure
--Segment tree.
+- Segment tree.
 
 ## Goals
--Clear all ABC Problems in AtCoder.
+- Clear all ABC Problems in AtCoder.
 
--Clear all easy & normal in thaiProgramming.
+- Clear all easy & normal in thaiProgramming.
