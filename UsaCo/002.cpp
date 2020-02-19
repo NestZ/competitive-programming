@@ -1,8 +1,23 @@
+/*
+ID: nestz671
+PROG: ride
+LANG: C++
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-
+	ofstream fout("ride.out");
+	ifstream fin("ride.in");
+	string a,b;fin >> a >> b;
+	int x = 1;
+	int y = 1;
+	for(int i = 0;i < a.length();i++)x *= (int)(a[i] - 'A') + 1;
+	for(int i = 0;i < b.length();i++)y *= (int)(b[i] - 'A') + 1;
+	if(x % 47 == y % 47)fout << "GO\n";
+	else fout << "STAY\n";
+	cerr << x << " " << y << endl;
+	return 0;
 }
 // make pair, tuple
 // make pair, tuple

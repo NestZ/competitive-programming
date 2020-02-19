@@ -2,7 +2,40 @@
 using namespace std;
 
 int main(){
-
+	int n,m;cin >> n >> m;
+	vector<vector<int>> v;
+	vector<int> p;
+	int ans = 0;
+	for(int i = 0;i < m;i++){
+		int k;cin >> k;
+		vector<int> vt;
+		for(int j = 0;j < k;j++){
+			int t;cin >> t;
+			vt.push_back(t);
+		}
+		v.push_back(vt);
+	}
+	for(int i = 0;i < m;i++){
+		int t;cin >> t;
+		p.push_back(t);
+	}
+	for(int i = 0;i < (1 << n);i++){
+		bool flag = true;
+		int ind = 0;
+		for(vector<int> vv : v){
+			int cnt = 0;
+			for(int j : vv){
+				if((1 << (j - 1)) & i)cnt++;
+			}
+			if((cnt & 1) != (p[ind] & 1)){
+				flag = false;
+				break;
+			}
+			ind++;
+		}
+		if(flag)ans++;
+	}
+	cout << ans;
 }
 // make pair, tuple
 // make pair, tuple
