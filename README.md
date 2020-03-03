@@ -3,8 +3,6 @@
 ## Algorithms
 - Fast Sieve prime.
 
-- Prime Factor.
-
 - Mod inverse.
 
 - Running Sum.
@@ -16,7 +14,16 @@
 ## Data Structure
 - Segment tree.
 
+- Fenwick tree (Binary indexed tree).
+
+- Union find disjoint set.
+
 ## Goals
 - Clear all ABC Problems in AtCoder.
 
-- Clear all easy & normal in thaiProgramming.
+- Clear all normal problem in thaiProgramming.
+
+## Achieved
+- Clear all easy problem in thaiProgramming.
+
+- Learn Prime Factorization.
