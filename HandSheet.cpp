@@ -5,6 +5,12 @@ int gcd(int a, int b){
 	return b ? gcd(a % b) : a;
 }
 
+#String constructor
+string s (5, '1'); // "11111"
+
+#Bitset constructor
+bitset<10> b(s); // "00000sssss"
+
 bool isPrime(int n){
    if(n <= 1)return false;
    if(n <= 3)return true;
