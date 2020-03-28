@@ -12,11 +12,11 @@
 - Modular division/inversion.
 
 ## Data Structure
-- Segment tree.
+- Implement Segment tree.
 
-- Fenwick tree (Binary indexed tree).
+- Implement Fenwick tree (Binary indexed tree).
 
-- Union find disjoint set.
+- Implement Union find disjoint set.
 
 ## Goals
 - Clear all ABC Problems in AtCoder.
@@ -27,3 +27,9 @@
 - Clear all easy problem in thaiProgramming.
 
 - Learn Prime Factorization.
+
+- Learn Segment tree.
+
+- Learn Fenwick tree.
+
+- Learn Unoin find disjoint set. 
