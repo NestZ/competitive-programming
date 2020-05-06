@@ -2,7 +2,7 @@ __gcd(int, int);
 lcm = a * b / __gcd(a, b);
 
 int gcd(int a, int b){
-	return b ? gcd(a % b, a) : a;
+	return b ? gcd(b, a % b) : a;
 }
 
 #String constructor
