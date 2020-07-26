@@ -6,8 +6,6 @@ typedef long long int ll;
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	freopen("out.txt", "w", stdout);
-	freopen("test2.in", "r", stdin);
 
 	int t;cin >> t;
 	for(int q = 0;q < t;q++){
