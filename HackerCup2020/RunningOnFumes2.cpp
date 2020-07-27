@@ -9,7 +9,7 @@ vector<vector<ll>> g(MAX);
 vector<ll> mn(MAX, INT64_MAX);
 vector<ll> ci(MAX);
 vector<bool> v(MAX, false);
-queue<pair<ll, ll>> q;
+set<ll> se;
 ll m;
 
 void dfs(ll curr, ll cost, ll dep){
@@ -17,7 +17,7 @@ void dfs(ll curr, ll cost, ll dep){
 	v[curr] = true;
 	if(mn[curr] > cost){
 		mn[curr] = cost;
-		q.push(make_pair(curr, mn[curr]));
+		se.insert(curr);
 	}
 	for(ll adj : g[curr]){
 		if(!v[adj])
@@ -49,12 +49,12 @@ int main(){
 			else ci[i + 1] = e;
 		}
 		dfs(a, 0, 0);
-		while(!q.empty()){
-			pair<ll, ll> p = q.front();
-			q.pop();
-			if(ci[p.first] == INT64_MAX || mn[p.first] == INT64_MAX || mn[p.first] < p.second)continue;
+		while(!se.empty()){
+			ll p = *(se.begin());
+			se.erase(p);
+			if(ci[p] == INT64_MAX || mn[p] == INT64_MAX)continue;
 			fill(v.begin(), v.end(), false);
-			dfs(p.first, mn[p.first] + ci[p.first], 0);
+			dfs(p, mn[p] + ci[p], 0);
 		}
 		mn[b] = (mn[b] == INT64_MAX ? -1 : mn[b]);
 		cout << "Case #" << c + 1 << ": " << mn[b] << endl;
