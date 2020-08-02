@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-  int D,M,sum,i;
+  int D,M,sum = 0,i;
   int Month[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
   cin >> D;
