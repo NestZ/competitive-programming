@@ -8,20 +8,9 @@ int main(){
 	cin.tie(0);
 
 	int n;cin >> n;
-	vector<ll> arr(n);
-	vector<ll> pre(n);
-	for(int i = 0;i < n;i++)cin >> arr[i];
-	unordered_set<ll> s;
-	ll ans = 0;
-	for(int i = 0;i < n;i++){
-		if(i > 0)pre[i] = arr[i] + pre[i - 1];
-		else pre[i] = arr[i];
-		if(pre[i] == 0 || s.count(pre[i]) > 0){
-			ans++;
-			s.clear();
-			pre[i] = arr[i];
-		}
-		s.insert(pre[i]);
-	}
-	cout << ans;
+	int r1, s1, p1;cin >> r1 >> s1 >> p1;
+	int r2, s2, p2;cin >> r2 >> s2 >> p2;
+	int mn = max(0, r1 - (r2 + p2)) + max(0, s1 - (s2 + r2)) + max(0, p1 - (p2 + s2));
+	int mx = min(r1, s2) + min(s1, p2) + min(p1, r2);
+	cout << mn << ' ' << mx;
 }
