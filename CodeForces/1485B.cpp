@@ -35,12 +35,15 @@ int main(){
 	}
 	for(int i = 0;i < q;i++){
 		int l, r;cin >> l >> r;
-		ll bl = arr[l - 1] - 1;
-		ll br = k - arr[r - 1];
-		if(l > 1)bl -= arr[l - 1] - arr[l - 2] - 1;
-		else if(l == 1)bl -= arr[l - 1] - 1;
-		if(r < n)br -= arr[r] - arr[r - 1] - 1;
-		else if(r == n)br -= k - arr[r - 1];
-		cout << pre[r] - pre[l - 1] + bl + br << endl;
+		if(n == 1)cout << k - 1 << endl;
+		else{
+			ll bl = arr[l - 1] - 1;
+			ll br = k - arr[r - 1];
+			if(l > 1)bl -= arr[l - 1] - arr[l - 2] - 1;
+			else if(l == 1)bl -= arr[l - 1] - 1;
+			if(r < n)br -= arr[r] - arr[r - 1] - 1;
+			else if(r == n)br -= k - arr[r - 1];
+			cout << pre[r] - pre[l - 1] + bl + br << endl;
+		}
 	}
 }
