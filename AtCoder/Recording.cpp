@@ -33,6 +33,30 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 
 int main(){
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+  int n, c;cin >> n >> c;
+  int ans = 0;
+  map<int, int> ch;
+  vector<vector<pair<int, int>>> arr(100010);
+  for(int i = 0;i < n;i++){
+    int s, t, x;cin >> s >> t >> x;
+    arr[s].push_back({x, 1});
+    arr[t].push_back({x, -1});
+  }
+  for(int i = 1;i < 100010;i++){
+    for(auto p : arr[i]){
+      if(p.second == 1)ch[p.first]++;
+    }
+    ans = max(ans, (int)ch.size());
+    for(auto p : arr[i]){
+      if(p.second == -1){
+        ch[p.first]--;
+        if(ch[p.first] == 0)
+          ch.erase(p.first);
+      }
+    }
+  }
+  cout << ans << endl;
 }

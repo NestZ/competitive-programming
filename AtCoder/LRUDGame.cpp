@@ -33,6 +33,30 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 
 int main(){
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+  int h, w, n;cin >> h >> w >> n;
+  int sr, sc;cin >> sr >> sc;
+  string s, t;cin >> s >> t;
+  int tu = 0, td = 0, tr = 0, tl = 0;
+  bool ans = true;
+  for(int i = 0;i < n;i++){
+    if(s[i] == 'L')tl++;
+    else if(s[i] == 'R')tr++;
+    else if(s[i] == 'U')tu++;
+    else td++;
+    //try to move to rlud
+    if(sc + tr > w)ans = false;
+    if(sc - tl < 1)ans = false;
+    if(sr - tu < 1)ans = false;
+    if(sr + td > h)ans = false;
+    if(t[i] == 'L')tr = max(tr - 1, -(sc - 1));
+    else if(t[i] == 'R')tl = max(tl - 1, -(w - sc));
+    else if(t[i] == 'U')td = max(td - 1, -(sr - 1));
+    else tu = max(tu - 1, -(h - sr));
+  }
+  if(ans)cout << "YES";
+  else cout << "NO";
+  cout << endl;
 }
