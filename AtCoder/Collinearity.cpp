@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define endl '\n'
+typedef long long int ll;
+
+#define sim template < class c
+#define ris return * this
+#define dor > debug & operator <<
+#define eni(x) sim > typename \
+  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {
+sim > struct rge { c b, e; };
+sim > rge<c> range(c i, c j) { return rge<c>{i, j}; }
+sim > auto dud(c* x) -> decltype(cerr << *x, 0);
+sim > char dud(...);
+struct debug {
+#ifdef LOCAL
+~debug() { cerr << endl; }
+eni(!=) cerr << boolalpha << i; ris; }
+eni(==) ris << range(begin(i), end(i)); }
+sim, class b dor(pair < b, c > d) {
+  ris << "(" << d.first << ", " << d.second << ")";
+}
+sim dor(rge<c> d) {
+  *this << "[";
+  for(auto it = d.b;it != d.e;++it)
+    *this << ", " + 2 * (it == d.b) << *it;
+  ris << "]";
+}
+#else
+sim dor(const c&) { ris; }
+#endif
+};
+#define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
+
+int main(){
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  int n;cin >> n;
+  vector<pair<int, int>> arr;
+  for(int i = 0;i < n;i++){
+    int x, y;cin >> x >> y;
+    arr.push_back({x, y});
+  }
+  sort(arr.begin(), arr.end());
+  for(int i = 0;i < n - 2;i++){
+    for(int j = i + 1;j < n - 1;j++){
+      for(int k = j + 1;k < n;k++){
+        if(arr[i].first == arr[j].first &&
+            arr[j].first == arr[k].first){
+          cout << "Yes\n";
+          return 0;
+        }
+        if(arr[i].second == arr[j].second &&
+            arr[j].second == arr[k].second){
+          cout << "Yes\n";
+          return 0;
+        }
+        long double fst = (long double)(arr[i].second - arr[j].second) / (long double)(arr[i].first - arr[j].first);
+        long double snd = (long double)(arr[j].second - arr[k].second) / (long double)(arr[j].first - arr[k].first);
+        if(fabs(fst - snd) < 1e-9){
+          cout << "Yes\n";
+          return 0;
+        }
+      }
+    }
+  }
+  cout << "No\n";
+}
