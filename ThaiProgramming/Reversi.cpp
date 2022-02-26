@@ -17,49 +17,59 @@ bool valid(int i, int j){
 	return true;
 }
 
+int dx[] = {1, 0, 1, -1, -1, 0, -1, 1};
+int dy[] = {0, 1, 1, -1, 0, -1, 1, -1};
 vector<pair<int, int>> rem;
+bool eated = false;
 
-void eat(int i, int j,int a, int b, char opp, char curr){
-	vector<pair<int, int>> del;
-	for(int k = 1;valid(i + k * a, j + k * b);k++){
-		char currT = table[i + k * a][j + k * b];
-		if(currT == opp)
-			del.push_back({i + k * a, j + k * b});
-		else if(currT == curr){
-			for(auto p : del)rem.push_back(p);
+void eat(int row, int col,int cur_dx, int cur_dy, char opp, char cur, bool start){
+	if(table[row][col] == '.')return;
+	if(start){
+		if(valid(row + cur_dx, col + cur_dy)){
+			eat(row + cur_dx, col + cur_dy, cur_dx, cur_dy, opp, cur, false);
+		}
+	}
+	else{
+		if(table[row][col] == opp)rem.push_back({row, col});
+		else if(table[row][col] == cur){
+			for(int i = 0;i < (int)rem.size();i++){
+				int fst = rem[i].first;
+				int snd = rem[i].second;
+				table[fst][snd] = cur;
+				eated = true;
+			}
 			return;
 		}
-		else return;
+		if(valid(row + cur_dx, col + cur_dy)){
+			eat(row + cur_dx, col + cur_dy, cur_dx, cur_dy, opp, cur, false);
+		}
 	}
 }
 
 int main(){
-	char c[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
-	int turn = 0;
-	char t[2] = {'X', 'O'};
-	map<char, int> col;
-	for(int i = 1;i <= 8;i++)col[c[i - 1]] = i;
 	int k;cin >> k;
-	for(int i = 0;i < k;i++){
-		char m;cin >> m;
-		int n;cin >> n;
-		int trow = n - 1;
-		int tcol = col[m] - 1;
-		char opp = t[(turn + 1) & 1];
-		char curr = t[turn & 1];
-		table[trow][tcol] = curr;
-		eat(trow, tcol, 0, 1, opp, curr);
-		eat(trow, tcol, 0, -1, opp, curr);
-		eat(trow, tcol, 1, 0, opp, curr);
-		eat(trow, tcol, -1, 0, opp, curr);
-		eat(trow, tcol, 1, 1, opp, curr);
-		eat(trow, tcol, 1, -1, opp, curr);
-		eat(trow, tcol, -1, 1, opp, curr);
-		eat(trow, tcol, -1, -1, opp, curr);
-		for(auto p : rem)table[p.first][p.second] = curr;
-		rem.clear();
-		turn++;
+	char sym[] = {'X', 'O'};
+	int turn = 0;
+	for(int i = 0;i < k;i++, turn = (turn + 1) % 2){
+		char c;cin >> c;
+		int col = c - 'a';
+		int row;cin >> row; row--;
+		table[row][col] = sym[turn];
+		for(int j = 0;j < 8;j++){
+			eat(row, col, dx[j], dy[j], sym[(turn + 1) % 2], sym[turn], true);
+			rem = vector<pair<int, int>>();
+		}
+		if(!eated){
+			turn = (turn + 1) % 2;
+			table[row][col] = sym[turn];
+			for(int j = 0;j < 8;j++){
+				eat(row, col, dx[j], dy[j], sym[(turn + 1) % 2], sym[turn], true);
+				rem = vector<pair<int, int>>();
+			}
+		}
+		eated = false;
 	}
+
 	for(int i = 0;i < 8;i++){
 		for(int j = 0;j < 8;j++){
 			cout << table[i][j];
